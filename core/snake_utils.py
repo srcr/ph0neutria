@@ -35,9 +35,7 @@ def upload_to_snake(mal_url, file_path, mal_class='Malware.Generic'):
             response = requests.post(BASECONFIG.snake_add_url, files={'file': raw_file}, data=sample_data)
 
             if response.status_code == 200:
-                responsejson = json.loads(response.content.decode('utf-8'))
-
-                LOGGING.info('Submitted file to Snake. Sample URL: {0}'.format(responsejson[0]['url']))
+                LOGGING.info('Submitted file to Snake. Sample URL: {0}'.format(file_name, response.status_code))
 
                 return True
 
